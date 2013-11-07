@@ -1,0 +1,25 @@
+{% extends 'blog/base.html' %}
+{% load blog_filters %}
+
+{% block content %}
+    <div class="container">
+        <div class="jumbotron">
+            <h2 class="text-center">Words of non-wisdom from the heart of the Galactic Empire</h2>
+        </div>
+        <br />
+        {% for article in articles %}
+                <div class="container-fluid">
+                    <div class="row-fluid">
+                        <div class="col-xs-12 col-sm-8 col-md-8 col-lg-8 col-md-offset-2 col-sm-offset-2 col-lg-offset-2">
+                            <a href="/blog/read/{{ article.slug }}/">
+                                <h1>{{ article.title }}</h1>
+                            </a>
+                            {{ article.content|mdparagraph|safe }}
+                        </div>
+                        <br />
+                        <br />
+                    </div>
+                </div>
+        {% endfor %}
+    </div>
+{% endblock %}
