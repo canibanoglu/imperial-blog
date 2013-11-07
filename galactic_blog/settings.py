@@ -169,8 +169,8 @@ except Exception as e:
     print e.message
 
 if not DEBUG:
-    AWS_STORAGE_BUCKET_NAME = os.environ['AWS_STORAGE_BUCKET_NAME']
-    AWS_ACCESS_KEY_ID = os.environ['AWS_ACCESS_KEY_ID']
+    AWS_STORAGE_BUCKET_NAME = 'www.imperialblog.eu'
+    AWS_ACCESS_KEY_ID = 'AKIAJQDTASZT5UZDQM4A'
     STATICFILES_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
     DEFAULT_FILE_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
     S3_URL = 'http://%s.s3.amazonaws.com/assets/' % AWS_STORAGE_BUCKET_NAME
