@@ -9,7 +9,7 @@ class BlogPost(models.Model):
     comments_enabled = models.BooleanField(default=True)
     draft_status = models.BooleanField(default=True)
     hacker_news_link = models.URLField(blank=True)
-    date = models.DateTimeField(auto_now_add=True)
+    date = models.DateField(auto_now_add=True)
     slug = models.SlugField()
 
     def save(self, *args, **kwargs):

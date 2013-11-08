@@ -5,4 +5,5 @@ urlpatterns = patterns('',
         url(r'^$', views.index, name='index'),
         url(r'^about/$', views.about, name='about'),
         url(r'^read/(?P<slug>[-\w]+)/$', views.read_article, name='read_article'),
+        url(r'^archives/$', views.archives, name="archives"),
         )

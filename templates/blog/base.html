@@ -1,15 +1,17 @@
+{% load static %}
+
 <!doctype html>
 <html>
     <head>
         <title>Imperial Blog</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.1/css/bootstrap.min.css">
-        <script src="https://code.jquery.com/jquery.js"></script>
-        <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.1/js/bootstrap.min.js"></script>
+        <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+        <link rel="stylesheet" href="{% static 'css/galactic.css' %}">
+        <link href='http://fonts.googleapis.com/css?family=Trade+Winds|Waiting+for+the+Sunrise|Orbitron|Rock+Salt|Montserrat+Subrayada:400,700|Slackey' rel='stylesheet' type='text/css'>
     </head>
 
     <body>
-        <header class="navbar navbar-inverse bs-docs-nav">
+        <header class="navbar navbar-inverse navbar-fixed-top bs-docs-nav" role="banner">
             <div class="container">
                 <div class="navbar-header">
                     <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".bs-navbar-collapse">
@@ -18,33 +20,36 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a href="/blog" class="navbar-brand">Imperial Blog</a>
+                    <a href="/" class="navbar-brand">Imperial Blog</a>
                 </div>
-                <nav class="navbar-collapse bs-navbar-collapse collapse" role="navigation">
+                <nav class="collapse navbar-collapse bs-navbar-collapse collapse" role="navigation">
                     <ul class="nav navbar-nav">
                         <li>
-                            <a href="/blog/archive">Archives</a>
+                            <a href="/archives/">Archives</a>
                         </li>
                         <li>
-                            <a href="/blog/projects">Projects</a>
+                            <a href="#">Projects</a>
                         </li>
                         <li>
-                            <a href="/blog/categories">Categories</a>
+                            <a href="#">Categories</a>
                         </li>
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
                         <li>
-                            <a href="/blog/about">About</a>
+                            <a href="/about">About</a>
                         </li>
                     </ul>
                 </nav>
             </div>
         </header>
+        <br />
 
         {% block content %}
         {% endblock %}
+
+        <script src="{% static 'js/jquery.min.js' %}"></script>
+        <script src="{% static 'js/bootstrap.min.js' %}"></script>
+
+        <footer class="bs-footer"></footer>
     </body>
 </html>
-
-
-

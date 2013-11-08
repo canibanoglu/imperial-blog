@@ -10,12 +10,13 @@ def article_first_paragraph(article):
 
 def index(request):
     context = RequestContext(request)
-    latest_articles = BlogPost.objects.order_by('-date')[:5]
+    latest_articles = BlogPost.objects.filter(draft_status=False).order_by('-date')[:5]
     context_dict = {'articles': latest_articles}
     return render_to_response('blog/index.html', context_dict, context)
 
 def about(request):
-    return HttpResponse("This is the about page")
+    context = RequestContext(request)
+    return render_to_response('blog/about.html', {}, context)
 
 def read_article(request, slug):
     context = RequestContext(request)
@@ -23,3 +24,9 @@ def read_article(request, slug):
     body = markdown.markdown(article.content, ['fenced_code'])
     context_dict = {'article': article}
     return render_to_response('blog/article.html', context_dict, context)
+
+def archives(request):
+    context = RequestContext(request)
+    articles = BlogPost.objects.filter(draft_status=False).order_by('-date')
+    context_dict = {'articles': articles}
+    return render_to_response('blog/archive.html', context_dict, context)
