@@ -1224,7 +1224,8 @@ body {
 .article-container h3,
 .article-container h4,
 .article-container h5,
-.article-container h6 {
+.article-container h6,
+.well h1 {
     font-family: 'Orbitron', sans-serif;
     color: rgb(155, 29, 74);
 }
