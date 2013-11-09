@@ -1,5 +1,6 @@
 # Django settings for galactic_blog project.
 import os
+import sys
 import dj_database_url
 
 ROOT = os.getcwd()
@@ -152,7 +153,12 @@ LOGGING = {
             'level': 'ERROR',
             'filters': ['require_debug_false'],
             'class': 'django.utils.log.AdminEmailHandler'
-        }
+            },
+        'console': {
+            'level': 'INFO',
+            'class': 'logging.StreamHandler',
+            'stream': sys.stdout,
+            },
     },
     'loggers': {
         'django.request': {
