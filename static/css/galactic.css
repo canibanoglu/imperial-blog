@@ -1228,3 +1228,58 @@ body {
     font-family: 'Orbitron', sans-serif;
     color: rgb(155, 29, 74);
 }
+
+.social {
+    font-size:32px;
+    color: inherit;
+}
+
+.el-icon-twitter:hover {
+    -webkit-transition: color .2s linear;
+    -moz-transition: color .2s linear;
+    -ms-transition: color .2s linear;
+    -o-transition: color .2s linear;
+    color: rgb(64, 153, 255);
+    text-decoration: none;
+}
+
+.el-icon-github:hover {
+    -webkit-transition: color .2s linear;
+    -moz-transition: color .2s linear;
+    -ms-transition: color .2s linear;
+    -o-transition: color .2s linear;
+    color: rgb(174, 74, 84);
+    text-decoration: none;
+}
+
+.el-icon-rss:hover {
+    -webkit-transition: color .2s linear;
+    -moz-transition: color .2s linear;
+    -ms-transition: color .2s linear;
+    -o-transition: color .2s linear;
+    color: rgb(255, 98, 0);
+    text-decoration: none;
+}
+
+.el-icon-facebook:hover {
+    -webkit-transition: color .2s linear;
+    -moz-transition: color .2s linear;
+    -ms-transition: color .2s linear;
+    -o-transition: color .2s linear;
+    color: rgb(59, 89, 152);
+    text-decoration: none;
+}
+
+.el-icon-envelope:hover {
+    -webkit-transition: color .2s linear;
+    -moz-transition: color .2s linear;
+    -ms-transition: color .2s linear;
+    -o-transition: color .2s linear;
+    color: rgb(70, 50, 101);
+    text-decoration: none;
+}
+
+.no-decoration, .no-decoration:hover, .no-decoration:before, .no-decoration:after {
+    text-decoration: none;
+    color: inherit;
+}
