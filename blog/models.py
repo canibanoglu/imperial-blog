@@ -11,6 +11,7 @@ class BlogPost(models.Model):
     hacker_news_link = models.URLField(blank=True)
     date = models.DateField(auto_now_add=True)
     slug = models.SlugField()
+    description = models.CharField(max_length=500, blank=True)
 
     def save(self, *args, **kwargs):
         if not self.id:
