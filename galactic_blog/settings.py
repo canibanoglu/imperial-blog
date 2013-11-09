@@ -33,7 +33,7 @@ ALLOWED_HOSTS = ['imperialblog.herokuapp.com',
 # http://en.wikipedia.org/wiki/List_of_tz_zones_by_name
 # although not all choices may be available on all operating systems.
 # In a Windows environment this must be set to your system time zone.
-TIME_ZONE = 'America/Chicago'
+TIME_ZONE = 'Europe/Istanbul'
 
 # Language code for this installation. All choices can be found here:
 # http://www.i18nguy.com/unicode/language-identifiers.html
@@ -171,6 +171,7 @@ except Exception as e:
 if not DEBUG:
     AWS_STORAGE_BUCKET_NAME = os.environ['AWS_STORAGE_BUCKET_NAME']
     AWS_ACCESS_KEY_ID = os.environ['AWS_ACCESS_KEY_ID']
+    AWS_PRELOAD_METADATA = True
     STATICFILES_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
     DEFAULT_FILE_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
     S3_URL = 'http://%s.s3.amazonaws.com/' % AWS_STORAGE_BUCKET_NAME
