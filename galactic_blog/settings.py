@@ -10,7 +10,7 @@ STATIC_PATH = os.path.join(ROOT, 'static')
 MEDIA_PATH = os.path.join(ROOT, 'media')
 
 
-DEBUG = False
+DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
 ADMINS = (
