@@ -7,5 +7,5 @@ urlpatterns = patterns('',
         url(r'^about/$', views.about, name='about'),
         url(r'^read/(?P<slug>[-\w]+)/$', views.read_article, name='read_article'),
         url(r'^archives/$', views.archives, name="archives"),
-        url(r'^feed/$', LatestEntriesFeed()),
+        url(r'^feed/$', LatestEntriesFeed(), name="feed"),
         )

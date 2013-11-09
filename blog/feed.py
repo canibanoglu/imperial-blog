@@ -17,4 +17,4 @@ class LatestEntriesFeed(Feed):
         return item.description
 
     def item_link(self, item):
-        return reverse('read_article', args=[item.slug])
+        return reverse('blog:read_article', kwargs={'slug': item.slug})

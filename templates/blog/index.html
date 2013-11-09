@@ -15,13 +15,13 @@
                 <div class="row-fluid">
                     <div class="col-xs-12 col-sm-8 col-md-8 col-lg-8 col-md-offset-2 col-sm-offset-2 col-lg-offset-2">
                         <div class="well well-lg">
-                        <a href="/read/{{ article.slug }}/" class="article-index-link">
+                            <a href="{% url 'blog:read_article' article.slug %}" class="article-index-link">
                             <h1>{{ article.title }}</h1>
                         </a>
                         <h6 class="text-muted">Published on: <small>{{ article.date }}</small></h6>
                         <hr />
                         {{ article.content|mdparagraph|safe }}
-                        <a href="/read/{{ article.slug }}/"><h6 class="text-right text-muted">Read on...</h6></a>
+                        <a href="{% url 'blog:read_article' article.slug %}"><h6 class="text-right text-muted">Read on...</h6></a>
                     </div>
                     </div>
                     <br />

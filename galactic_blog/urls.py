@@ -15,7 +15,7 @@ urlpatterns = patterns('',
 
     # Uncomment the next line to enable the admin:
     url(r'^sidious/', include(admin.site.urls)),
-    url(r'^', include('blog.urls')),
+    url(r'^', include('blog.urls', 'blog', 'imperialblog')),
 )
 
 if not settings.DEBUG:
