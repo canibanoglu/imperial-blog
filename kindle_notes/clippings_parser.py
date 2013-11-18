@@ -53,11 +53,24 @@ def kindle_parse_title_info(title_info):
     if title.startswith('\xef\xbb\xbf'):
         title = title[3:]
     title = title.strip()
-    if ',' in author:
-        author_lname, author_fname = author[:-1].split(', ')
-        author = ' '.join((author_fname, author_lname))
+    if ";" in author:
+        # Multiple authors
+        authors = author.split(";")
     else:
-        author = author[:-1]
+        authors = [author,]
+
+    for i, author in enumerate(authors):
+        if ',' in author:
+            author_lname, author_fname = author.replace(")","").split(', ')
+            author = ' '.join((author_fname, author_lname))
+            authors[i] = author
+        else:
+            authors[i] = author[:-1]
+
+    if len(authors) > 1:
+        author = " and ".join(authors)
+    else:
+        author = authors[0]
 
     return (title, author)
 
