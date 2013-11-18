@@ -1,0 +1,9 @@
+{% extends 'blog/base.html' %}
+
+{% block content %}
+<form enctype="multipart/form-data" action="/kindle/upload/" method="post">
+    {% csrf_token %}
+    <input type="file" name="file" />
+    <button class="btn btn-primary" type="submit" name="submit">Upload!</button>
+</form>
+{% endblock %}

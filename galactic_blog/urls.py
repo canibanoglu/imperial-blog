@@ -16,6 +16,7 @@ urlpatterns = patterns('',
     # Uncomment the next line to enable the admin:
     url(r'^sidious/', include(admin.site.urls)),
     url(r'^', include('blog.urls', 'blog', 'imperialblog')),
+    url(r'^kindle/', include('kindle_notes.urls', 'kindle', 'kindle_notes')),
 )
 
 if not settings.DEBUG:

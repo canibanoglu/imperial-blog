@@ -1,0 +1,18 @@
+{% extends 'blog/base.html' %}
+
+{% block content %}
+<div class="container">
+    <div class="col-xs-12 col-sm-10 col-md-10 col-lg-10 col-md-offset-1 col-sm-offset-1 col-lg-offset-1">
+        <div class="row">
+        {% for book in books %}
+        {% if forloop.counter|divisibleby:"4" %}</div><br /><div class="row">{% endif %}
+        <div class="col-lg-4">
+            <a href="/kindle/{{ book.id }}/view/">
+                <img style="width: 300px; height: 400px; background-color:white" src="{{ book.image }}" class="img-thumbnail img-responsive">
+            </a>
+        </div>
+        {% if forloop.last %}</div>{% endif %}
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
