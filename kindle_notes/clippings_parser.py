@@ -1,3 +1,4 @@
+import time
 from datetime import datetime
 from kindle_notes.models import Book, Note
 
@@ -24,8 +25,13 @@ def kindle_clippings_parser(fin):
         books.setdefault(book['title'],
                 Book.objects.get_or_create(title=book['title'],
                                            author=book['author'])[0])
-        notes.setdefault(note['datetime'], note)[note_body['type']] = note_body['body']
-        notes[note['datetime']]['book'] = books[book['title']]
+        for t in (note['time'] - 1, note['time'], note['time'] + 1):
+            if t in notes:
+                notes[t][note_body['type']] = note_body['body']
+                break
+        else:
+            notes.setdefault(note['time'], note)[note_body['type']] = note_body['body']
+            notes[note['time']]['book'] = books[book['title']]
 
     for note in notes.values():
         new_note = Note(date = note.get('datetime'),
@@ -43,7 +49,8 @@ def kindle_extract_info(l):
     body = body.decode('utf-8')
     book_dict = {'title': title, 'author': author}
     note_dict = {'page': page, 'location': location,
-                 'datetime': dtime.strftime('%Y-%m-%d %H:%M:%S')}
+                 'time': dtime,
+                 'datetime': datetime.fromtimestamp(dtime)}
     type_dict = {'type': note_type.lower(), 'body': body}
 
     return (book_dict, note_dict, type_dict)
@@ -78,6 +85,7 @@ def kindle_parse_page_info(page_info):
     page, location, dtime = page_info.split(' | ')
     dummy1, dummy2, note_type, dummy3, dummy4, page = page.split()
     location = location.rsplit(' ', 1)[-1]
-    dtime = datetime.strptime(dtime.split(', ', 1)[1], '%B %d, %Y %I:%M:%S %p')
+    dtime = time.strptime(dtime.split(', ', 1)[1], "%B %d, %Y %I:%M:%S %p")
+    dtime = time.mktime(dtime)
     return (note_type.lower(), page, location, dtime)
 
