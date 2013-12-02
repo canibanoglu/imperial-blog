@@ -13,6 +13,25 @@
             </div>
         </div>
     </div>
+    {% if user.is_authenticated %}
+    <div class="row">
+        <div class="col-xs-12 col-sm-10 col-md-8 col-lg-8 col-md-offset-2 col-sm-offset-1 col-lg-offset-2 well">
+            <h4>Add a note to this book</h4>
+            <form id="new-note" method="post" action="/kindle/{{ book.id }}/view/">
+                {% csrf_token %}
+                {% for hidden in form.hidden_fields %}
+                    {{ hidden }}
+                {% endfor %}
+
+                {% for visible in form.visible_fields %}
+                    {{ visible }} <br />
+                {% endfor %}
+                <button class="btn btn-default" type="submit">Add note</button>
+            </form>
+        </div>
+    </div>
+    <hr />
+    {% endif %}
     {% for note in notes %}
     <div class="col-xs-12 col-sm-10 col-md-8 col-lg-8 col-md-offset-2 col-sm-offset-1 col-lg-offset-2 well">
         {% if note.highlight %}
