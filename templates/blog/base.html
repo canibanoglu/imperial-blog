@@ -9,6 +9,7 @@
         <link rel="stylesheet" href="{% static 'css/galactic.css' %}">
         <link href='http://fonts.googleapis.com/css?family=Trade+Winds|Waiting+for+the+Sunrise|Orbitron|Rock+Salt|Montserrat+Subrayada:400,700|Slackey' rel='stylesheet' type='text/css'>
         <link rel="stylesheet" href="{% static 'css/elusive-webfont.css' %}">
+        <script src="{% static 'js/bootstrap.min.js' %}"></script>
         <script>
           (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
             (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -42,13 +43,18 @@
                             <a href="{% url 'kindle_notes:books_index' %}">Kindle Notes</a>
                         </li>
                         <li>
-                            <a href="#">Projects</a>
+                            <a href="{% url 'blog:categories' %}">Categories</a>
                         </li>
                         <li>
-                            <a href="#">Categories</a>
+                            <a href="#">Projects</a>
                         </li>
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
+                        {% if user.is_authenticated %}
+                        <li>
+                            <a href="{% url 'admin:index' %}">Sidious</a>
+                        </li>
+                        {% endif %}
                         <li>
                             <a href="{% url 'blog:about' %}">About</a>
                         </li>

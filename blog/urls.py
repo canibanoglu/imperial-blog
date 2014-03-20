@@ -8,4 +8,5 @@ urlpatterns = patterns('',
         url(r'^read/(?P<slug>[-\w]+)/$', views.read_article, name='read_article'),
         url(r'^archives/$', views.archives, name="archives"),
         url(r'^feed/$', LatestEntriesFeed(), name="feed"),
+        url(r'^categories/$', views.categories, name="categories"),
         )

@@ -19,6 +19,7 @@
                             <h1>{{ article.title }}</h1>
                         </a>
                         <h6 class="text-muted">Published on: <small>{{ article.date }}</small></h6>
+                        <h6 class="text-muted">Category: <small>{{ article.category.name }}</small></h6>
                         <hr />
                         {{ article.content|mdparagraph|safe }}
                         <a href="{% url 'blog:read_article' article.slug %}"><h6 class="text-right text-muted">Read on...</h6></a>

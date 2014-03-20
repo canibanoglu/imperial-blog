@@ -1,6 +1,6 @@
 from django.shortcuts import render_to_response, get_object_or_404
 from django.template import RequestContext
-from blog.models import BlogPost
+from blog.models import BlogPost, Category
 from django.http import HttpResponse
 import markdown
 
@@ -30,3 +30,15 @@ def archives(request):
     articles = BlogPost.objects.filter(draft_status=False).order_by('-date')
     context_dict = {'articles': articles}
     return render_to_response('blog/archive.html', context_dict, context)
+
+def categories(request):
+    context = RequestContext(request)
+    all_categories = Category.objects.all()
+    context_dict = {'categories': all_categories, 'posts': {}}
+    for category in all_categories:
+        posts = BlogPost.objects.filter(category=category)
+        context_dict['posts'][category.name] = posts
+        print "\n"*4
+        print category.get_posts
+        print '\n'*4
+    return render_to_response('blog/categories_list.html', context_dict, context)
