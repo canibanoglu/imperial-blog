@@ -9,4 +9,5 @@ urlpatterns = patterns('',
         url(r'^archives/$', views.archives, name="archives"),
         url(r'^feed/$', LatestEntriesFeed(), name="feed"),
         url(r'^categories/$', views.categories, name="categories"),
+        url(r'^inks/$', views.similar_inks, name="similar_inks"),
         )

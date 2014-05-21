@@ -1,0 +1,29 @@
+{% extends 'blog/base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="container">
+    {% for ink, others in similars.items %}
+    <div class="panel-group" id="accordion">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title text-center">
+                    <a data-toggle="collapse" data-parent="#accordion" href="#ink{{ forloop.counter }}">
+                        {{ ink }}
+                    </a>
+                </h3>
+            </div>
+            <div id="ink{{ forloop.counter }}" class="panel-collapse collapse">
+                <div class="panel-body">
+                    {% for other in others %}
+                    <li>
+                        <img src="{{ other.1 }}">
+                    </li>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

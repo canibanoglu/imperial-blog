@@ -3,6 +3,7 @@ from django.template import RequestContext
 from blog.models import BlogPost, Category
 from django.http import HttpResponse
 import markdown
+import data
 
 # This may need to move to a helpers.py file later on
 def article_first_paragraph(article):
@@ -42,3 +43,8 @@ def categories(request):
         print category.get_posts
         print '\n'*4
     return render_to_response('blog/categories_list.html', context_dict, context)
+
+def similar_inks(request):
+    context = RequestContext(request)
+    context_dict = {'similars': data.similars}
+    return render_to_response('blog/inks.html', context_dict, context)
